@@ -12,4 +12,4 @@ function update(){
 form.addEventListener('input',update);
 form.addEventListener('change',update);
 form.addEventListener('submit',e=>e.preventDefault());
-form.addEventListener('reset',()=>queueMicrotask(update));
+form.addEventListener('reset',event=>{event.preventDefault();for(const selector of ['#query', '#group'])document.querySelector(selector).value='';update();});
